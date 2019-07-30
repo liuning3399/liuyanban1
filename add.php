@@ -1,4 +1,3 @@
-
 <?php
 
 header('Content-type: text/html; charset=UTF8');
@@ -15,25 +14,25 @@ header('Content-type: text/html; charset=UTF8');
 
 </head>
 
-<body background="./images/7.jpg" style="background-size:cover;" >
+<body background="./images/7.jpg" style="background-size:cover;">
 
 <center>
 
     <h2>我的留言板</h2>
 
-    <input type = "button" value = "添加留言" onclick="location.href='add.php'" class="button"/>
+    <input type="button" value="添加留言" onclick="location.href='add.php'" class="button"/>
 
-    <input type = "button" value = "查看留言" onclick="location.href='show.php'" class="button"/>
+    <input type="button" value="查看留言" onclick="location.href='show.php'" class="button"/>
 
-    <input type = "button" value = "退出登陆" onclick="location.href='index.php'" class="button"/>
+    <input type="button" value="退出登陆" onclick="location.href='index.php'" class="button"/>
 
-    <hr width = "70%">
+    <hr width="70%">
 
 </center>
 
 <div class="k1">
 
-    <form action = "doAdd.php" method = "post">
+    <form action="doAdd.php" method="post">
 
         <h1>Add A Message
 
@@ -45,20 +44,18 @@ header('Content-type: text/html; charset=UTF8');
 
             <span>Your Name :</span>
 
-            <input type="text" name="author" placeholder="Your Full Name" />
+            <input type="text" name="author" placeholder="Your Full Name"/>
 
         </label>
-
 
 
         <label>
 
             <span>Title :</span>
 
-            <input type="text" name="title" placeholder="Please input title" />
+            <input type="text" name="title" placeholder="Please input title"/>
 
         </label>
-
 
 
         <label>
@@ -73,7 +70,7 @@ header('Content-type: text/html; charset=UTF8');
 
             <input type="submit" value="提交" class="submit">
 
-            <input type = "reset" value = "重置" class="reset">
+            <input type="reset" value="重置" class="reset">
 
         </div>
 

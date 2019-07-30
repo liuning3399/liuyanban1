@@ -1,17 +1,14 @@
-
-
-
 <?php
 
 session_start();
 
-$id=$_SESSION["uid"];
+$id = $_SESSION["uid"];
 
 $title = addslashes($_POST["title"]);
 
 $author = addslashes($_POST["author"]);
 
-$_SESSION["authorl"]=$author;
+$_SESSION["authorl"] = $author;
 
 $content = addslashes($_POST["content"]);
 
@@ -21,32 +18,39 @@ require_once "connet.php";
 
 require_once 'mysqlconfig.php';
 
-$ma1=new DB();
+$ma1 = new DB();
 
-$link=$ma1->connect();
+$link = $ma1->connect();
+
+$fp = fopen("lock.txt", "w+");
+if (!flock($fp, LOCK_EX | LOCK_NB)) {
+    echo "系统繁忙，请稍后再试";
+    return;
+}
+
 
 $sql = "insert into tbl_ms1 (user,title,author,ip,liuyan,time) values('$id','$title','$author','$ip','$content',now())";
 
-if($title!=null){
+if ($title) {
 
-    if($author!=null){
+    if ($author) {
 
-        $res = $ma1->insertl($link,$sql);
+        $res = $ma1->insertl($link, $sql);
 
-    };
+        flock($fp, LOCK_UN);//释放锁
 
-    if($author==null){
+    } else {
 
         echo "<script>alert('请输入留言者！');location='add.php';</script>";
 
     };
 
-};
-
-if($title==null){
+} else {
 
     echo "<script>alert('请输入留言标题！');location='add.php';</script>";
 
 };
+
+fclose($fp);
 
 ?>

@@ -1,21 +1,20 @@
-
 <?php
 
-class DB{
+class DB
+{
 
-    function connect(){
+    function connect()
+    {
 
-        @$link = mysqli_connect(DB_HOST,DB_USER,DB_PWD);//连接数据库
+        @$link = mysqli_connect(DB_HOST, DB_USER, DB_PWD);//连接数据库
 
-        mysqli_set_charset($link,DB_CHARSET);//设置数据库字体格式
+        mysqli_set_charset($link, DB_CHARSET);//设置数据库字体格式
 
-        mysqli_select_db($link,DB_DBNAME) or die('数据库打开失败');//选择数据库
+        mysqli_select_db($link, DB_DBNAME) or die('数据库打开失败');//选择数据库
 
-        if(mysqli_connect_errno())
+        if (mysqli_connect_errno()) {
 
-        {
-
-            die('数据库连接失败 : '.mysqli_connect_errno());
+            die('数据库连接失败 : ' . mysqli_connect_errno());
 
         }
 
@@ -23,7 +22,8 @@ class DB{
 
     }
 
-    function insert($link,$sql){
+    function insert($link, $sql)
+    {
 
         if (mysqli_query($link, $sql)) {
 
@@ -36,22 +36,20 @@ class DB{
         }
 
 
-
     }
 
-    function CheckUser($link,$sql){
+    function CheckUser($link, $sql)
+    {
 
-        $result = mysqli_query($link,$sql);
+        $result = mysqli_query($link, $sql);
 
         $row = mysqli_num_rows($result);
 
-        if($row != 0){
+        if ($row != 0) {
 
             return true;
 
-        }
-
-        else{
+        } else {
 
             return false;
 
@@ -59,7 +57,8 @@ class DB{
 
     }
 
-    function insertl($link,$sql){
+    function insertl($link, $sql)
+    {
 
         if (mysqli_query($link, $sql)) {
 
@@ -72,12 +71,12 @@ class DB{
         }
 
 
-
     }
 
-    function print1($link,$sql){
+    function print1($link, $sql)
+    {
 
-        $result = mysqli_query($link,$sql);
+        $result = mysqli_query($link, $sql);
 
         $data = array();
 
@@ -98,7 +97,6 @@ class DB{
         }
 
     }
-
 
 
 }
